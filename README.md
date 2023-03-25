@@ -54,7 +54,7 @@ and other details in the [model documentation](/docs/index.md).
 
 |Inferencing|Training|
 |-----------|--------|
-|{{int}}GB RAM | {{int}}GB RAM|
+|16GB RAM | 16GB RAM|
 |           | NVIDIA GPU |
 
 ## Get Started With Inferencing
