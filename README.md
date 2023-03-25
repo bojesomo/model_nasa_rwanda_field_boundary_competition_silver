@@ -36,12 +36,8 @@ publish it to [MLHub](https://mlhub.earth/models).
 }}
 
 # BorderAttention: a segmentation model for fields
-
-{{ Model Description (paragraph) }}
-
-![{{model_id}}](https://radiantmlhub.blob.core.windows.net/frontend-dataset-images/odk_sample_agricultural_dataset.png)
-
-MLHub model id: `{{model_id}}`. Browse on [Radiant MLHub](https://mlhub.earth/model/{{model_id}}).
+In the [NASA Harvest Field Boundary Detection Challenge](https://zindi.africa/competitions/nasa-harvest-field-boundary-detection-challenge/leaderboard)
+this was the second place solution by the team `HungryLearner`.
 
 ## ML Model Documentation
 
