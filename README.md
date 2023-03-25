@@ -35,7 +35,7 @@ publish it to [MLHub](https://mlhub.earth/models).
 
 }}
 
-# {{ Model Name (one line) }}
+# BorderAttention: a segmentation model for fields
 
 {{ Model Description (paragraph) }}
 
