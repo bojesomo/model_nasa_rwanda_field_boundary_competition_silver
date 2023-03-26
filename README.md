@@ -61,34 +61,17 @@ and other details in the [model documentation](/docs/index.md).
 
 First clone this Git repository.
 
-{{
-
-:pushpin: only include the following LFS section if a file > 100MB had to be
-committed using LFS
-
-<https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github>)
-
-}}
-
-{{
-
 Please note: this repository uses
 [Git Large File Support (LFS)](https://git-lfs.github.com/) to include the
 model checkpoint file. Either install `git lfs` support for your git client,
 use the official Mac or Windows GitHub client to clone this repository.
 
-}}
-
-{{
-
 :zap: Shell commands have been tested with Linux and MacOS but will
 differ on Windows, or depending on your environment.
 
-}}
-
 ```bash
-git clone https://github.com/{{your_org_name}}/{{repository_name}}.git
-cd {{repository_name}}/
+git clone https://github.com/radiantearth/model_nasa_rwanda_field_boundary_competition_bronze.git
+cd mmodel_nasa_rwanda_field_boundary_competition_bronze/
 ```
 
 After cloning the model repository, you can use the Docker Compose runtime
@@ -96,40 +79,17 @@ files as described below.
 
 ## Pull or Build the Docker Image
 
-{{
-
-:pushpin: Model developer: please build and publish your images to [Docker
-Hub](https://hub.docker.com/). The images should be public, and should be
-tagged as `model_id:version` and `model_id:version-gpu`.
-
-For example model_id `model_unet_agri_western_cape_v1`
-would have two docker image tags published on Docker Hub:
-
-* `model_unet_agri_western_cape:1` for cpu inferencing
-* `model_unet_agri_western_cape:1-gpu` for gpu inferencing
-
-}}
-
 Pull pre-built image from Docker Hub (recommended):
 
 ```bash
-# cpu
-docker pull docker.io/{{your_org_name}}/{{repository_name}}:1
-# optional, for NVIDIA gpu
-docker pull docker.io/{{your_org_name}}/{{repository_name}}:1-gpu
-
+docker pull docker.io/radiantearth/model_nasa_rwanda_field_boundary_competition_silver:1
 ```
 
 Or build image from source:
 
 ```bash
-# cpu
-docker build -t {{your_org_name}}/{{repository_name}}:1 -f Dockerfile_cpu .
-# optional, for NVIDIA gpu
-docker build -t {{your_org_name}}/{{repository_name}}:1-gpu -f Dockerfile_gpu .
-
-```
-
+cd docker-services/
+docker build -t radiantearth/model_nasa_rwanda_field_boundary_competition_silver:1 .
 ## Run Model to Generate New Inferences
 
 {{
