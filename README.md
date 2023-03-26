@@ -3,37 +3,6 @@
 A template repository for a ML model to be published on
 [Radiant MLHub](https://mlhub.earth/models).
 
-## Instructions for Model Contributors
-
-### Focus on inferencing
-
-The intent of models published to MLHub is to provide a pre-trained model in a
-Docker image which can be used to perform inferencing (predictions) on new
-datasets. Model re-training, or other use cases, are not the primary goal.
-Therefore the model codes and model checkpoint you contribute here should have
-a simple flow of INPUT_DATA -> inferencing -> OUTPUT_DATA.
-
-### Next Steps
-
-1. Contact ml@radiant.earth to discuss your model, get a `model_id`.
-
-2. Create a Git repository using this template, named as the model id, without
-the version suffix. For example model id `model_unet_agri_western_cape_v1`
-would use the repository name: `model_unet_agri_western_cape`. In a later step
-when the model is published we would use a Git tag named `v1`.
-
-3. :zap: Edit all the files in your new repository, and commit your model. Any file
-having `{{` mustache brackets `}}` should be manually edited, or if it does not
-apply, then the template text should be removed (like the current section).
-
-4. Contact ml@radiant.earth with any questions. When you are ready to submit
-your model, send us a link to your model repository.
-
-5. Finally, Radiant Earth will create a [STAC](https://stacspec.org) catalog item using the
-[ml-model STAC extension](https://github.com/stac-extensions/ml-model), and then
-publish it to [MLHub](https://mlhub.earth/models).
-
-}}
 
 # BorderAttention: a segmentation model for fields
 In the [NASA Harvest Field Boundary Detection Challenge](https://zindi.africa/competitions/nasa-harvest-field-boundary-detection-challenge/leaderboard)
@@ -71,7 +40,7 @@ differ on Windows, or depending on your environment.
 
 ```bash
 git clone https://github.com/radiantearth/model_nasa_rwanda_field_boundary_competition_bronze.git
-cd mmodel_nasa_rwanda_field_boundary_competition_bronze/
+cd model_nasa_rwanda_field_boundary_competition_bronze/
 ```
 
 After cloning the model repository, you can use the Docker Compose runtime
