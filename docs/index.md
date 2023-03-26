@@ -1,230 +1,186 @@
-# {{ Model Name (one line) }}
+# nasa: HungryLearner solution
 
-{{ Model Description (paragraph) }}
+This documents the following submission
 
-![{{model_id}}](https://radiantmlhub.blob.core.windows.net/frontend-dataset-images/odk_sample_agricultural_dataset.png)
+ - ID: `suGqqCGZ`
+ - Filename: `ens_former+3extras+1fapn_t9.csv`
+ - Comment: `bawo ni leekan si???`
+ - Submitted: `26 February 19:50`
 
-MLHub model id: `{{model_id}}`. Browse on [Radiant MLHub](https://mlhub.earth/model/{{model_id}}).
+This submission was made in the `NASA Harvest Field Boundary Detection Challenge` and placed second on the private leaderboard.
 
-## Training Data
+## Environment
 
-{{
+Below are details of the environment.
 
-Provide links to the training data for this model. There should be separate
-links for source and labels collections as the following example. Make sure to
-include `Source` and `Labels` in the corresponding names of each collection.
+### Python
 
-
-Example using MLHub training data:
-
-- [Training Data Source](https://api.radiant.earth/mlhub/v1/collections/ref_african_crops_kenya_02_source)
-- [Training Data Labels](https://api.radiant.earth/mlhub/v1/collections/ref_african_crops_kenya_02_labels)
-
-}}
-
-## Related MLHub Dataset {{ (Optional) }}
-
-{{
-
-If this model was based on a dataset which is already published to MLHub, enter that link here.
-
-[https://mlhub.earth/data/ref_african_crops_kenya_02](https://mlhub.earth/data/ref_african_crops_kenya_02)
-
-}}
-
-## Citation
-
-{{
-
-example:
-
-Amer, K. (2022) “A Spatio-Temporal Deep Learning-Based Crop Classification
-Model for Satellite Imagery”, Version 1.0, Radiant MLHub. [Date Accessed]
-Radiant MLHub. <https://doi.org/10.34911/rdnt.h28fju>
-
-}}
-
-## License
-
-{{
-
-example: CC-BY-4.0
-
-(update the LICENSE file in this repository to match the license)
-
-}}
-
-## Creator{{s}}
-
-{{
-
-example: Model creators and links go here (examples: Radiant Earth Foundation, Microsoft
-AI for Good Research Lab).
-
-}}
-
-## Contact
-
-{{
-
-Contact email goes here (example: ml@radiant.earth)
-
-}}
-
-## Applicable Spatial Extent
-
-{{
-
-Here please provide the applicable spatial extent, for new inferencing (this
-may be the same, or different than the spatial extent of the training data).
-Please provide the spatial extent bounding box as WKT text or GEOJSON text.
-
-```geojson
-{
-  "type": "FeatureCollection",
-  "features": [
-    {
-      "type": "Feature",
-      "id": 1,
-      "properties": {
-        "ID": 0
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-              [-90,35],
-              [-90,30],
-              [-85,30],
-              [-85,35],
-              [-90,35]
-          ]
-        ]
-      }
-    }
-  ]
-}
+```
+python --version
+Python 3.8.16
 ```
 
-<https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-diagrams#creating-geojson-and-topojson-maps>
+### Packages
 
-}}
+The relevant packages are shown below. This is the contents of the `requirements.txt` file that is included in the solution.
 
-## Applicable Temporal Extent
+```
+torch
+rasterio==1.3.4
+radiant_mlhub==0.5.5
+scipy==1.8.1
+einops
+sklearn
+ttach==0.0.3
+kornia
+pytorch_lightning
+torchmetrics
+timm
+torch_optimizer
+segmentation_models_pytorch==0.3.2
+matplotlib
+pandas
+```
+### Competition data
 
-{{
+Note that the competition data is not included in the archive. It *has to be copied in* in order to reproduce the solution.
 
-The recommended start/end date of imagery for new inferencing. Example:
+Copy the data into the
 
-| Start | End |
-|-------|-----|
-| 2000-01-01 | present |
+```
+nasa_rwanda_field_boundary_competition
+```
 
-}}
+directory. This directory is in the archive, but it is just an empty placeholder initially.
 
-## Learning Approach
+When done, it should look something like this.
 
-{{
+```
+|--- <solution root>
+|       |--- nasa_rwanda_field_boundary_competition
+|       |       |--- nasa_rwanda_field_boundary_competition_labels_train
+|       |       |       |--- _common
+|       |       |       |--- collection.json
+|       |       |       |--- nasa_rwanda_field_boundary_competition_labels_train_00
+|       |       |       |--- nasa_rwanda_field_boundary_competition_labels_train_01
+|       |       |       |--- nasa_rwanda_field_boundary_competition_labels_train_02
+|       |       |       |--- nasa_rwanda_field_boundary_competition_labels_train_03
+|       |       |            ...
+|       |       |--- nasa_rwanda_field_boundary_competition_labels_test
+|       |       |       |--- collection.json
+|       |       |       |--- nasa_rwanda_field_boundary_competition_source_test_00_2021_03
+|       |       |       |--- nasa_rwanda_field_boundary_competition_source_test_00_2021_04
+|       |       |       |--- nasa_rwanda_field_boundary_competition_source_test_00_2021_08
+|       |       |            ...
+|       |--- README.md
+|       |--- ensemble-top-submit.ipynb
+|            ...
+```
 
-The learning approach used to train the model. It is recommended that you use
-one of the values below, but other values are allowed.
+## Data Preparation
+For simplicity, the data in ```nasa_rwanda_field_boundary_competition``` was converted to ```pkl``` format using 
+```
+Saving Images as pkl.ipynb
+```
+When done, it should look something like this.
+```
+|--- <solution root>
+|       |--- data
+|       |       |--- train
+|       |       |       |--- fileds
+|       |       |       |       |---00.pkl
+|       |       |       |       |---01.pkl
+|       |       |       |           ...
+|       |       |       |--- masks
+|       |       |       |       |---00.pkl
+|       |       |       |       |---01.pkl
+|       |       |       |           ...
+|       |       |--- test
+|       |       |       |--- fields
+|       |       |       |       |---00.pkl
+|       |       |       |       |---01.pkl
+|       |       |--- statistics.csv
+|       |       |--- test.csv
+|       |       |--- train.csv
+|       |--- README.md
+|       |--- ensemble.ipynb
+|            ...
+```
 
-- Supervised
-- Unsupervised
-- Semi-supervised
-- Reinforcement-learning
-- Other (explain)
+## Solution review
 
-}}
+The solution is based on the following pre-trained models
+ - encoders
+   - selecsls42b
+   - selecsls60
+   - sebotnet33ts_256
+   - vgg13_bn
+   - vgg19
+   - vgg16
+   - vgg19_bn
+ - decoders
+   - unet++
+   - manet
+   - [MANet](https://github.com/bojesomo/model_nasa_rwanda_field_boundary_competition_silver/tree/main/full_solution/decoders/MANet.py)
+   - [fapn](https://github.com/bojesomo/model_nasa_rwanda_field_boundary_competition_silver/tree/main/full_solution/decoders/fapn.py)
 
-## Prediction Type
+The following variations were applied to this model. It was majorly trained with varied set of input channels and output types
+ - input variation
+   - visible only
+     - band 1 (Blue)
+     - band 2 (Green)
+     - band 3 (Red)
+   - all bands available
+     - band 1 (Blue)
+     - band 2 (Green)
+     - band 3 (Red)
+     - band 4 (NIR)
+     
+ - output variation
+  - boundary only
+  - boundary + extent
+    - `extent` refers to filling all fields with 1 to mimic a pure segmentation mask 
 
-{{
+### System
 
-The type of prediction that the model makes. It is recommended that you use one
-of the values below, but other values are allowed.
+These models were optimised using.
 
-- Object-detection
-- Classification
-- Segmentation
-- Regression
-- Other (explain)
+ - Linux
+ - 16GB NVIDIA GPU
 
-}}
+It will take a few hours to run.
 
-## Model Architecture
+## Preprocessing
 
-{{
+All channels were scaled using statistics computed from the training data.
 
-Identifies the architecture employed by the model. This may include any string
-identifiers, but publishers are encouraged to use well-known identifiers
-whenever possible. More details than just “it’s a CNN”!
+## Validation
 
-}}
+All models were trained with full data without validation using `sam` optimizer with `adamw` as the `base optimizer` to limit overfitting.
 
-## Training Operating System
+## Postprocessing
+TTA
+ - merge
+   - max
+ - ops
+   - `HorizontalFlip`
+   - `VerticalFlip`
+   - `Rotate90`
 
-{{
-
-Identifies the operating system on which the model was trained.
-
-- Linux
-- Windows (win32)
-- Windows (cygwin)
-- MacOS (darwin)
-- Other (explain)
-
-}}
-
-## Training Processor Type
-
-{{
-
-The type of processor used during training. Must be one of "cpu" or "gpu".
-
-- cpu
-- gpu
-
-}}
-
-## Model Inferencing
-
-Review the [GitHub repository README](../README.md) to get started running
-this model for new inferencing.
-
-## Methodology
-
-{{
-
-Use this section to provide more information to the reader about the model. Be
-as descriptive as possible. The suggested sub-sections are as following:
-
-}}
-
-### Training
-
-{{
-
-Explain training steps such as augmentations and preprocessing used on image
-before training.
-
-}}
+## Running the code
 
 ### Model
 
-{{
+Once the data is ready, you can run the solution by running the notebook.
 
-Explain the model and why you chose the model in this section. A graphical representation
-of the model architecture could be helpful to individuals or organizations who would
-wish to replicate the workflow and reproduce the model results or to change the model
-architecture and improve the results.
+```
+Experiments.ipynb
+```
 
-}}
+### Submission
 
-### Structure of Output Data
+I apply threshold 0.9 then voting ensemble on each cell. The final submission file can be generated by running the notebook
 
-{{
-
-Explain output file names and formats, interpretation, classes, etc.
-
-}}
+```
+ensemble.ipynb
+```
