@@ -25,29 +25,22 @@ Python 3.8.16
 The relevant packages are shown below. This is the contents of the `requirements.txt` file that is included in the solution.
 
 ```
+torch
 rasterio==1.3.4
 radiant_mlhub==0.5.5
 scipy==1.8.1
+einops
 sklearn
 ttach==0.0.3
-albumentations==1.3.0
-# git+https://github.com/albumentations-team/albumentations
+kornia
+pytorch_lightning
+torchmetrics
+timm
+torch_optimizer
 segmentation_models_pytorch==0.3.2
 matplotlib
 pandas
 ```
-
-Note that this uses the latest albumentations version downloaded from git.
-
-The models were built using torch. To install it, execute the following line. Note that this can also be done by executing the `torch-install.sh` script in the archive.
-
-```
-pip3 install -r requirements.txt
-pip3 install torch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 --extra-index-url https://download.pytorch.org/whl/cu113
-```
-
-This install will also generate a lot of dependent installs of packages e.g. `numpy` and `pillow`.
-
 ### Competition data
 
 Note that the competition data is not included in the archive. It *has to be copied in* in order to reproduce the solution.
