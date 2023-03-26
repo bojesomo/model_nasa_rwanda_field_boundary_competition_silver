@@ -1,0 +1,30 @@
+The code navigation goes as follows
+
+    - For data conversion from raw files to pkl (Saving Images as pkl)
+    - structure
+        - data_loader : includes dataset and pytorch-lightning Datamodule
+        - model : includes the pytorch-lightning model used in this work
+        - utils : extra code simplification functions
+        - sam : SAM optimizer
+        - decoders : include some segmentation decoders not in segmentation-models-pytorch
+            - MANet.py
+            - fapn.py
+        - data/  (created during pkl file creation)
+            - train/
+                - fields/
+                - masks/
+            - test/
+                - fields/
+            - train.csv
+            - test.csv
+            - statistics.csv
+            
+    - For running the experiment used in generating the leaderboard submission (Experiments)
+        - This experiment was used for creating a list of models (17)
+        - The models will be saved in $results$ folder.
+        - The experiment also individually create a submission ready csv files for each $model$ used as well as an ensemble based on hard voting.
+        - the ensemble (ens_sub.csv) created is the final submission.
+                 
+                 
+ 
+ Thank you
