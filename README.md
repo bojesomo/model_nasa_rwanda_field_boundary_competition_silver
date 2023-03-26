@@ -33,8 +33,8 @@ use the official Mac or Windows GitHub client to clone this repository.
 differ on Windows, or depending on your environment.
 
 ```bash
-git clone https://github.com/radiantearth/model_nasa_rwanda_field_boundary_competition_bronze.git
-cd model_nasa_rwanda_field_boundary_competition_bronze/
+git clone https://github.com/radiantearth/model_nasa_rwanda_field_boundary_competition_silver.git
+cd model_nasa_rwanda_field_boundary_competition_silver/
 ```
 
 After cloning the model repository, you can use the Docker Compose runtime
