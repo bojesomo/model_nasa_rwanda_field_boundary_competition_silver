@@ -42,10 +42,8 @@ files as described below.
 
 ## Pull or Build the Docker Image
 
-Pull pre-built image from Docker Hub (recommended):
-
 ```bash
-docker pull docker.io/radiantearth/model_nasa_rwanda_field_boundary_competition_silver:1
+docker pull docker.io/radiantearth/mmodel_nasa_rwanda_field_boundary_competition_silver:1
 ```
 
 Or build image from source:
@@ -53,30 +51,37 @@ Or build image from source:
 ```bash
 cd docker-services/
 docker build -t radiantearth/model_nasa_rwanda_field_boundary_competition_silver:1 .
+```
+
 ## Run Model to Generate New Inferences
 
-{{
+1. Prepare your input and output data folders:
 
-:pushpin: Model developer: do not commit training data to the data folder on
-this repo, this is only a placeholder to run the model locally for inferencing.
+    * The `data/input` folder in this repository contains some placeholder files to guide you.
+    The input data should follow the following convention. It should be placed in a directory named
+    `xxx_<tile_id>_<year>_<month>`,
+    where `xxx` is arbitrary and `<tile_id>` represents the id of the tile stored in that directory.
 
-}}
+    Here is a sample for reference.
 
-1. Prepare your input and output data folders. The `data/` folder in this repository
-    contains some placeholder files to guide you.
+    ```text
+    data/input/nasa_rwanda_field_boundary_competition_source_test_00_2021_03
+    data/input/nasa_rwanda_field_boundary_competition_source_test_00_2021_04
+    data/input/nasa_rwanda_field_boundary_competition_source_test_00_2021_08
+    data/input/nasa_rwanda_field_boundary_competition_source_test_00_2021_10
+    data/input/nasa_rwanda_field_boundary_competition_source_test_00_2021_11
+    data/input/nasa_rwanda_field_boundary_competition_source_test_00_2021_12
+    data/input/nasa_rwanda_field_boundary_competition_source_test_01_2021_03
+    data/input/nasa_rwanda_field_boundary_competition_source_test_01_2021_04
+    data/input/nasa_rwanda_field_boundary_competition_source_test_01_2021_08
+    data/input/nasa_rwanda_field_boundary_competition_source_test_01_2021_10
+    data/input/nasa_rwanda_field_boundary_competition_source_test_01_2021_11
+    data/input/nasa_rwanda_field_boundary_competition_source_test_01_2021_12
+    ```
 
-    * The `data/` folder must contain:
-        * `input/chips` {{ Landsat, Maxar Open-Data 30cm, Sentinel-2, etc. }} imagery chips for inferencing:
-            * File name: {{ `chip_id.tif` }} e.g. {{ `0fec2d30-882a-4d1d-a7af-89dac0198327.tif` }}
-            * File Format: {{ GeoTIFF, 256x256 }}
-            * Coordinate Reference System: {{ WGS84, EPSG:4326 }}
-            * Bands: {{ 3 bands per file:
-                * Band 1 Type=Byte, ColorInterp=Red
-                * Band 2 Type=Byte, ColorInterp=Green
-                * Band 3 Type=Byte, ColorInterp=Blue
-                }}
-        * `/input/checkpoint` the model checkpoint {{ file | folder }}, `{{ checkpoint file or folder name }}`.
-            Please note: the model checkpoint is included in this repository.
+    These directories will contain tiff files for three tiles (id `00`,
+    and `01`). 
+
     * The `output/` folder is where the model will write inferencing results.
 
 2. Set `INPUT_DATA` and `OUTPUT_DATA` environment variables corresponding with
@@ -85,17 +90,17 @@ this repo, this is only a placeholder to run the model locally for inferencing.
 
     ```bash
     # change paths to your actual input and output folders
-    export INPUT_DATA="/home/my_user/{{repository_name}}/data/input/"
-    export OUTPUT_DATA="/home/my_user/{{repository_name}}/data/output/"
+    export INPUT_DATA="/home/my_user/model_nasa_rwanda_field_boundary_competition_silver/data/input/"
+    export OUTPUT_DATA="/home/my_user/model_nasa_rwanda_field_boundary_competition_silver/data/output/"
+    export MODELS_DIR="/home/my_user/model_nasa_rwanda_field_boundary_competition_silver/models"
+    export WORKSPACE_DIR="/home/my_user/model_nasa_rwanda_field_boundary_competition_silver/workspace"
     ```
 
-3. Run the appropriate Docker Compose command for your system
+3. Run the appropriate Docker Compose command for your system:
 
     ```bash
-    # cpu
-    docker compose up {{model_id}}_cpu
-    # optional, for NVIDIA gpu driver
-    docker compose up {{model_id}}_gpu
+    cd docker-services/
+    docker compose up model_nasa_rwanda_field_boundary_competition_silver_v1
     ```
 
 4. Wait for the `docker compose` to finish running, then inspect the
