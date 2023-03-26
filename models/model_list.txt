@@ -1,0 +1,16 @@
+selecsls42b_manet_0222-2257.ckpt
+sebotnet33ts_256_MANet_0220-2122.ckpt  
+selecsls42b_MANet_0225-1357.ckpt
+sebotnet33ts_256_MANet_0220-2158.ckpt  
+selecsls42b_manet_0225-1358.ckpt
+sehalonet33ts_MANet_0220-1921.ckpt    
+selecsls60b_MANet_0220-2121.ckpt
+selecsls42b_fapn_0226-1036.ckpt       
+selecsls60_MANet_0221-2117.ckpt
+selecsls42b_MANet_0220-1557.ckpt       
+selecsls60_manet_0221-2302.ckpt
+selecsls42b_MANet_0220-1910.ckpt       
+vgg13_bn_manet_0222-2211.ckpt
+selecsls42b_manet_0221-1558.ckpt       
+vgg19_manet_0222-2320.ckpt
+selecsls42b_MANet_0222-2156.ckpt
