@@ -1,9 +1,3 @@
-{{
-
-A template repository for a ML model to be published on
-[Radiant MLHub](https://mlhub.earth/models).
-
-
 # BorderAttention: a segmentation model for fields
 In the [NASA Harvest Field Boundary Detection Challenge](https://zindi.africa/competitions/nasa-harvest-field-boundary-detection-challenge/leaderboard)
 this was the second place solution by the team `HungryLearner`.
