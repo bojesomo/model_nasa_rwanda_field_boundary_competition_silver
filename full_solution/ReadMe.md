@@ -1,19 +1,17 @@
-# nasa: team borderline solution
+# nasa: HungryLearner solution
 
 This documents the following submission
 
- - ID: `djj1LDTT`
- - Filename: `submission.csv`
- - Comment: `5e pre 29`
- - Submitted: `26 February 23:41`
+ - ID: `suGqqCGZ`
+ - Filename: `ens_former+3extras+1fapn_t9.csv`
+ - Comment: `bawo ni leekan si???`
+ - Submitted: `26 February 19:50`
 
-This submission was mode on behalf of team `borderline` in the `NASA Harvest Field Boundary Detection Challenge` and placed third on the private leaderboard.
+This submission was mode on behalf of team `HungryLearner` in the `NASA Harvest Field Boundary Detection Challenge` and placed second on the private leaderboard.
 
-This solution was a team effort by team borderline with members
+This solution was a solo effort by team HungryLearner with members
 
- - WhyNot
- - Moto
- - skaak
+ - HungryLearner (https://zindi.africa/users/HungryLearner)
 
 ## Environment
 
