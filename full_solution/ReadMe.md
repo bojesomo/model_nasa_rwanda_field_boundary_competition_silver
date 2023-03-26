@@ -7,11 +7,7 @@ This documents the following submission
  - Comment: `bawo ni leekan si???`
  - Submitted: `26 February 19:50`
 
-This submission was mode on behalf of team `HungryLearner` in the `NASA Harvest Field Boundary Detection Challenge` and placed second on the private leaderboard.
-
-This solution was a solo effort by team HungryLearner with members
-
- - HungryLearner (https://zindi.africa/users/HungryLearner)
+This submission was made in the `NASA Harvest Field Boundary Detection Challenge` and placed second on the private leaderboard.
 
 ## Environment
 
