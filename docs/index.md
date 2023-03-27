@@ -184,3 +184,6 @@ I apply threshold 0.9 then voting ensemble on each cell. The final submission fi
 ```
 ensemble.ipynb
 ```
+### Contact
+
+asbojesomo@gmail.com 
